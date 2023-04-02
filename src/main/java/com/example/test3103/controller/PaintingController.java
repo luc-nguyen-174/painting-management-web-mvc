@@ -69,7 +69,7 @@ public class PaintingController {
         // Return success message
         ModelAndView modelAndView = new ModelAndView("/painting/create");
         modelAndView.addObject("paintings", new Painting());
-        modelAndView.addObject("message", "create a new painting successfully");
+        modelAndView.addObject("message", "Create a new painting successfully. \n Back to list after 3s");
         return modelAndView;
     }
 
@@ -98,6 +98,9 @@ public class PaintingController {
     @PostMapping("/edit")
     public ModelAndView update(@ModelAttribute Painting painting) {
         paintingService.save(painting);
-        return new ModelAndView("redirect:/paintings");
+        ModelAndView modelAndView = new ModelAndView("/painting/edit");
+        modelAndView.addObject("paintings", painting);
+        modelAndView.addObject("message", "Painting updated successfully. \nBack to list after 3s.");
+        return modelAndView;
     }
 }

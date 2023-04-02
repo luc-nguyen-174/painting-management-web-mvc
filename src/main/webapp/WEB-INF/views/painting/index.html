@@ -28,10 +28,9 @@
             <th>Ảnh</th>
             <th>Danh mục</th>
             <th></th>
-            <th></th>
         </tr>
         <tr th:each="p: ${paintings}">
-            <td><a th:href="@{/painting/edit/{id}(id=${p.getId()})}" th:text="${p.getName()}"></a></td>
+            <td><a th:href="@{/paintings/edit/{id}(id=${p.getId()})}" th:text="${p.getName()}"></a></td>
             <td th:text="${p.getHeight()}"></td>
             <td th:text="${p.getWidth()}"></td>
             <td th:text="${p.getMaterial()}"></td>
@@ -41,9 +40,6 @@
             </td>
             <td th:if="${p.getCategory()}" th:text="${p.category.getCategory()}"></td>
             <td th:unless="${p.getCategory()}"></td>
-            <td>
-                <button><a th:href="@{/paintings/edit/__${p.id}__}">Sửa</a></button>
-            </td>
             <td>
                 <button id="delete" onclick="return confirm('Are you sure?')">
                     <a th:href="@{/paintings/delete/__${p.id}__}"><i class="fa-solid fa-trash"></i></a>

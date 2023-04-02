@@ -21,6 +21,11 @@
     <h3>Create new painting</h3>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
+        <script th:inline="javascript">
+            setTimeout(function () {
+                window.location.href = /*[[@{/paintings}]]*/ '#';
+            }, 3000);
+        </script>
     </th:block>
     <form th:object="${paintings}" th:action="@{/paintings/save}" th:method="post" enctype="multipart/form-data">
         <table border="1" cellpadding="5">

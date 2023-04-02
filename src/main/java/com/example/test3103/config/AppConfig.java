@@ -14,6 +14,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -52,9 +53,10 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories("com.example.test3103.repository")
+@PropertySource("classpath:upload_file.properties")
 @ComponentScan("com.example.test3103")
 public class AppConfig implements WebMvcConfigurer, ApplicationContextAware, WebApplicationInitializer {
-    @Value("${file-upload")
+    @Value("${file-upload}")
     private String fileUpload;
 
     private ApplicationContext context;
@@ -147,7 +149,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware, Web
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getResolver() throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSizePerFile(52428800);
+        resolver.setMaxUploadSizePerFile(999999999);
         return resolver;
     }
 
