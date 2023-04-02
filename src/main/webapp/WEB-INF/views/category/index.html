@@ -20,7 +20,9 @@
         </thead>
         <tbody>
         <tr th:each="c:${categories}">
-            <td th:text="${c.id}"></td>
+            <td>
+                <a th:href="@{/categories/view/__${c.id}__}" th:text="${c.getId()}"></a>
+            </td>
             <td>
                 <a th:href="@{/categories/edit/__${c.id}__}" th:text="${c.getCategory()}"></a>
             </td>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>View category: <span th:text="${categories.getCategory()}"></span></h1>
+    <a href="/categories">Category list</a>
+    <table border="1" cellpadding="5">
+        <tr>
+            <td>Tên</td>
+            <td>Chiều cao (cm)</td>
+            <td>Chiều rộng (cm)</td>
+            <td>Chất liệu</td>
+            <td>Mô tả</td>
+            <td>Giá (VNĐ)</td>
+            <td>Ảnh</td>
+            <td>Danh mục</td>
+        </tr>
+        <tr th:each="p: ${paintings}">
+            <td th:text="${p.getName()}"></td>
+            <td th:text="${p.getHeight()}"></td>
+            <td th:text="${p.getWidth()}"></td>
+            <td th:text="${p.getMaterial()}"></td>
+            <td th:text="${p.getDescription()}"></td>
+            <td th:text="${p.getPrice()}"></td>
+            <td><img width="100" height="100" th:src="@{'/image/' + ${p.getImage()}}" alt="">
+            </td>
+            <td th:if="${p.getCategory()}" th:text="${p.category.getCategory()}"></td>
+            <td th:unless="${p.getCategory()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

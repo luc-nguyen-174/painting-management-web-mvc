@@ -1,6 +1,7 @@
 package com.example.test3103.controller;
 
 import com.example.test3103.model.Category;
+import com.example.test3103.model.Painting;
 import com.example.test3103.service.category.ICategoryService;
 import com.example.test3103.service.paint.IPaintService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,19 @@ public class CategoryController {
     public String delete(@PathVariable Long id) {
         categoryService.remove(id);
         return "redirect:/categories";
+    }
+    @GetMapping("/view/{id}")
+    public ModelAndView viewProvince(@PathVariable("id") Long id){
+        Optional<Category> category = categoryService.findById(id);
+        if(!category.isPresent()){
+            return new ModelAndView("/error.404");
+        }
+
+        Iterable<Painting> paintings = paintService.findAllByCategory(category.get());
+
+        ModelAndView modelAndView = new ModelAndView("/category/view");
+        modelAndView.addObject("categories", category.get());
+        modelAndView.addObject("paintings", paintings);
+        return modelAndView;
     }
 }

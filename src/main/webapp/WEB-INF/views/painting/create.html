@@ -23,7 +23,7 @@
         <p th:text="${message}"></p>
     </th:block>
     <form th:object="${paintings}" th:action="@{/paintings/save}" th:method="post" enctype="multipart/form-data">
-        <table>
+        <table border="1" cellpadding="5">
             <tr>
                 <td><label for="name">Tên tranh:</label></td>
                 <td><input type="text" id="name" name="name" ></td>

@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <form th:object="${paintings}" th:action="@{/paintings/edit}" th:method="post">
-        <table>
+        <table border="1" cellpadding="5">
             <input th:type="hidden" name="id" th:field="*{id}">
             <tr>
                 <td><label>Tên tranh:</label></td>
