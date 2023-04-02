@@ -5,9 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<center>
-    <h1>Create Category</h1>
-    <a th:href="@{/category}">Back To List</a>
+<div align="center">
+    <h1>Edit category</h1>
+    <p>
+        <a href="/category">Category list</a>
+    </p>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
         <script th:inline="javascript">
@@ -16,17 +18,15 @@
             }, 3000);
         </script>
     </th:block>
-</center>
-<div align="center">
-    <form th:action="@{/category/create}" th:object="${cate}" method="post">
-
+    <form th:action="@{/category/edit}" th:object="${cate}" method="post">
+        <input type="hidden" th:field="*{id}">
         <table>
             <tr>
                 <td>Category</td>
-                <td><input type="text" th:field="*{category}"></td>
+                <td><input type="text" th:field="*{category}" ></td>
             </tr>
         </table>
-        <input type="submit" value="Save">
+        <input type="submit" value="Update">
     </form>
 </div>
 </body>

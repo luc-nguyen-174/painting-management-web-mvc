@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h1>Category List</h1>
+</center>
+<div align="center">
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Category</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c:${cate}">
+            <td th:text="${c.getId()}"></td>
+            <td>
+                <a th:href="@{/category/edit/{id}(id=${c.getId()})}" th:text="${c.getCategory()}"></a>
+            </td>
+            <td>
+                <button id="delete" onclick="return confirm('Are you sure?')">
+                    <a th:href="@{/category/delete/__${c.id}__}"><i class="fa-solid fa-trash"></i></a>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

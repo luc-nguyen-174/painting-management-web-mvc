@@ -21,10 +21,6 @@ public class Category {
         this.category = category;
     }
 
-    public Category(Long id, String category) {
-        this.id = id;
-        this.category = category;
-    }
 
     public void setId(Long id) {
         this.id = id;
