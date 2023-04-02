@@ -1,44 +1,34 @@
 package com.example.test3103.model;
 
+import com.example.test3103.model.Category;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
+@Component
 public class PaintingForm {
-    //(id, mã tranh, kích thước chiều cao, kích thước chiều rộng, chất liệu, mô tả, giá, danh mục tranh)
-
     private Long id;
-    private String paintingCode;
-    private Float height;
-    private Float width;
+    private String name;
+    private Long height;
+    private Long width;
     private String material;
     private String description;
-    private String category;
-    private MultipartFile img;
+    private Long price;
+    private MultipartFile image;
+    private Category category;
 
     public PaintingForm() {
     }
 
-    public PaintingForm(String paintingCode, Float height, Float width, String material, String description, String category, MultipartFile img) {
-        this.paintingCode = paintingCode;
+    public PaintingForm(String name, Long height, Long width, String material, String description, Long price, MultipartFile image, Category category) {
+        this.name = name;
         this.height = height;
         this.width = width;
         this.material = material;
         this.description = description;
+        this.price = price;
+        this.image = image;
         this.category = category;
-        this.img = img;
-    }
-
-    public PaintingForm(Long id, String paintingCode, Float height, Float width, String material, String description, String category, MultipartFile img) {
-        this.id = id;
-        this.paintingCode = paintingCode;
-        this.height = height;
-        this.width = width;
-        this.material = material;
-        this.description = description;
-        this.category = category;
-        this.img = img;
     }
 
     public Long getId() {
@@ -49,27 +39,27 @@ public class PaintingForm {
         this.id = id;
     }
 
-    public String getPaintingCode() {
-        return paintingCode;
+    public String getName() {
+        return name;
     }
 
-    public void setPaintingCode(String paintingCode) {
-        this.paintingCode = paintingCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Float getHeight() {
+    public Long getHeight() {
         return height;
     }
 
-    public void setHeight(Float height) {
+    public void setHeight(Long height) {
         this.height = height;
     }
 
-    public Float getWidth() {
+    public Long getWidth() {
         return width;
     }
 
-    public void setWidth(Float width) {
+    public void setWidth(Long width) {
         this.width = width;
     }
 
@@ -89,19 +79,27 @@ public class PaintingForm {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public MultipartFile getImg() {
-        return img;
-    }
-
-    public void setImg(MultipartFile img) {
-        this.img = img;
     }
 }

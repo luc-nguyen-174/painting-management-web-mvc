@@ -1,56 +1,53 @@
 package com.example.test3103.model;
 
+import com.example.test3103.model.Category;
+
 import javax.persistence.*;
-import javax.validation.constraints.Null;
 
 @Entity
-@Table
+@Table(name = "painting")
 public class Painting {
-    //(id, mã tranh, kích thước chiều cao, kích thước chiều rộng, chất liệu, mô tả, giá, danh mục tranh)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String paintingCode;
-    private Float height;
-    private Float width;
+    private String name;
+
+    private Long height;
+
+    private Long width;
+
     private String material;
+
     private String description;
+
+    private Long price;
+
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn(name = "category_id")
     private Category category;
-    private String img;
 
     public Painting() {
     }
 
-    public Painting(String paintingCode, Float height, Float width, String material, String description, String img) {
-        this.paintingCode = paintingCode;
+    public Painting(String name, Long height, Long width, String material, String description, Long price, String image, Category category) {
+        this.name = name;
         this.height = height;
         this.width = width;
         this.material = material;
         this.description = description;
-        this.img = img;
-    }
-
-    public Painting(String paintingCode, Float height, Float width, String material, String description, Category category, String img) {
-        this.paintingCode = paintingCode;
-        this.height = height;
-        this.width = width;
-        this.material = material;
-        this.description = description;
+        this.price = price;
+        this.image = image;
         this.category = category;
-        this.img = img;
-    }
-
-    public Painting(Long id, String paintingCode, Float height, Float width, String material, String description, Category category, String img) {
-        this.id = id;
-        this.paintingCode = paintingCode;
-        this.height = height;
-        this.width = width;
-        this.material = material;
-        this.description = description;
-        this.category = category;
-        this.img = img;
     }
 
     public Long getId() {
@@ -61,27 +58,27 @@ public class Painting {
         this.id = id;
     }
 
-    public String getPaintingCode() {
-        return paintingCode;
+    public String getName() {
+        return name;
     }
 
-    public void setPaintingCode(String paintingCode) {
-        this.paintingCode = paintingCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Float getHeight() {
+    public Long getHeight() {
         return height;
     }
 
-    public void setHeight(Float height) {
+    public void setHeight(Long height) {
         this.height = height;
     }
 
-    public Float getWidth() {
+    public Long getWidth() {
         return width;
     }
 
-    public void setWidth(Float width) {
+    public void setWidth(Long width) {
         this.width = width;
     }
 
@@ -101,6 +98,14 @@ public class Painting {
         this.description = description;
     }
 
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -109,11 +114,4 @@ public class Painting {
         this.category = category;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 }

@@ -1,8 +1,8 @@
 package com.example.test3103.controller;
 
 import com.example.test3103.model.Category;
-import com.example.test3103.service.Category.ICategory;
-import com.example.test3103.service.Paint.IPaint;
+import com.example.test3103.service.category.ICategoryService;
+import com.example.test3103.service.paint.IPaintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,10 @@ import java.util.Optional;
 @RequestMapping("/category")
 public class CategoryController {
     @Autowired
-    private ICategory categoryService;
+    private ICategoryService categoryService;
+
+    @Autowired
+    private IPaintService paintService;
 
     @GetMapping("/create")
     public ModelAndView createCategoryForm() {

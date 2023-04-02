@@ -1,4 +1,4 @@
-package com.example.test3103.service.Category;
+package com.example.test3103.service.category;
 
 import com.example.test3103.model.Category;
 import com.example.test3103.repository.ICategoryRepo;
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 @Service
-public class ICategoryService implements ICategory {
+public class CategoryService implements ICategoryService {
 
     @Autowired
     private ICategoryRepo categoryRepo;

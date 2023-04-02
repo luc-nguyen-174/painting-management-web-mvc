@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface IPaintingRepo extends PagingAndSortingRepository<Painting, Long> {
     Iterable<Painting> findAllByCategory(Category category);
 
-    Painting findByPaintingCode(String paintingCode);
+    Painting findByName(String name);
 }

@@ -20,7 +20,7 @@
     </th:block>
     <form th:action="@{/category/edit}" th:object="${cate}" method="post">
         <input type="hidden" th:field="*{id}">
-        <table>
+        <table style="border-radius: 5px">
             <tr>
                 <td>Category</td>
                 <td><input type="text" th:field="*{category}" ></td>

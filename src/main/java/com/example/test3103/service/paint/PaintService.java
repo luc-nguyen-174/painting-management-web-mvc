@@ -1,4 +1,4 @@
-package com.example.test3103.service.Paint;
+package com.example.test3103.service.paint;
 
 import com.example.test3103.model.Category;
 import com.example.test3103.model.Painting;
@@ -6,11 +6,10 @@ import com.example.test3103.repository.IPaintingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.Optional;
 
 @Service
-public class IPaintService implements IPaint {
+public class PaintService implements IPaintService {
     @Autowired
     private IPaintingRepo paintingRepo;
 
@@ -40,8 +39,8 @@ public class IPaintService implements IPaint {
     }
 
     @Override
-    public Painting findByPaintingCode(String paintingCode) {
-        return paintingRepo.findByPaintingCode(paintingCode);
+    public Painting findByName(String name) {
+        return paintingRepo.findByName(name);
     }
 
 }
