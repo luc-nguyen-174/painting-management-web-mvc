@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/painting")
+@RequestMapping("/paintings")
 public class PaintingController {
 
     @Value("${file-upload}")
@@ -38,16 +38,16 @@ public class PaintingController {
 
     @GetMapping("")
     public ModelAndView index() {
-        Iterable<Painting> painting = paintingService.findAll();
+        Iterable<Painting> paintings = paintingService.findAll();
         ModelAndView modelAndView = new ModelAndView("/painting/index");
-        modelAndView.addObject("painting", painting);
+        modelAndView.addObject("paintings", paintings);
         return modelAndView;
     }
 
     @GetMapping("/create")
     public ModelAndView showCreateFrom() {
         ModelAndView modelAndView = new ModelAndView("/painting/create");
-        modelAndView.addObject("painting", new PaintingForm());
+        modelAndView.addObject("paintings", new PaintingForm());
         return modelAndView;
     }
 
@@ -68,7 +68,7 @@ public class PaintingController {
         paintingService.save(painting);
         // Return success message
         ModelAndView modelAndView = new ModelAndView("/painting/create");
-        modelAndView.addObject("painting", new Painting());
+        modelAndView.addObject("paintings", new Painting());
         modelAndView.addObject("message", "create a new painting successfully");
         return modelAndView;
     }
@@ -78,16 +78,16 @@ public class PaintingController {
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable Long id) {
         paintingService.remove(id);
-        return "redirect:/painting";
+        return "redirect:/paintings";
     }
 
 
     //edit information
-    @GetMapping("/update/{id}")
+    @GetMapping("/edit/{id}")
     public ModelAndView showUpdateFrom(@PathVariable Long id) {
         Optional<Painting> painting = paintingService.findById(id);
         if (painting.isPresent()) {
-            ModelAndView modelAndView = new ModelAndView("/painting/update");
+            ModelAndView modelAndView = new ModelAndView("/painting/edit");
             modelAndView.addObject("paintings", painting.get());
             return modelAndView;
         } else {

@@ -7,25 +7,26 @@
 <body>
 <center>
     <h1>Category List</h1>
-    <a href="/category/create"></a>
+    <a th:href="@{/categories/create}">Create category</a>
 </center>
 <div align="center">
     <table border="1" cellpadding="5">
         <thead>
         <tr>
-            <td>ID</td>
-            <td>Category</td>
+            <th>ID</th>
+            <th>Category</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="c:${cate}">
-            <td th:text="${c.getId()}"></td>
+        <tr th:each="c:${categories}">
+            <td th:text="${c.id}"></td>
             <td>
-                <a th:href="@{/category/edit/{id}(id=${c.getId()})}" th:text="${c.getCategory()}"></a>
+                <a th:href="@{/categories/edit/__${c.id}__}" th:text="${c.getCategory()}"></a>
             </td>
             <td>
                 <button id="delete" onclick="return confirm('Are you sure?')">
-                    <a th:href="@{/category/delete/__${c.id}__}"><i class="fa-solid fa-trash"></i></a>
+                    <a th:href="@{/categories/delete/__${c.id}__}"><i class="fa-solid fa-trash"></i></a>
                 </button>
             </td>
         </tr>

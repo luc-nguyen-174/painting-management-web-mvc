@@ -8,21 +8,21 @@
 <div align="center">
     <h1>Edit category</h1>
     <p>
-        <a href="/category">Category list</a>
+        <a th:href="@{/categories}">Back To List</a>
     </p>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
         <script th:inline="javascript">
             setTimeout(function () {
-                window.location.href = /*[[@{/category}]]*/ '#';
+                window.location.href = /*[[@{/categories}]]*/ '#';
             }, 3000);
         </script>
     </th:block>
-    <form th:action="@{/category/edit}" th:object="${cate}" method="post">
+    <form th:action="@{/categories/edit}" th:object="${categories}" method="post">
         <input type="hidden" th:field="*{id}">
         <table style="border-radius: 5px">
             <tr>
-                <td>Category</td>
+                <td><label>Category</label></td>
                 <td><input type="text" th:field="*{category}" ></td>
             </tr>
         </table>

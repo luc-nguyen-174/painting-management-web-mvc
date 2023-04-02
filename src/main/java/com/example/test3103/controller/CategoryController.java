@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
@@ -22,25 +22,25 @@ public class CategoryController {
     @GetMapping("/create")
     public ModelAndView createCategoryForm() {
         ModelAndView modelAndView = new ModelAndView("/category/create");
-        modelAndView.addObject("cate", new Category());
+        modelAndView.addObject("categories", new Category());
         return modelAndView;
     }
 
-    @PostMapping("/create")
-    public ModelAndView create(@ModelAttribute("category") Category category) {
+    @PostMapping("/save")
+    public ModelAndView create(@ModelAttribute("categories") Category category) {
         categoryService.save(category);
 
         ModelAndView modelAndView = new ModelAndView("/category/create");
-        modelAndView.addObject("cate", new Category());
+        modelAndView.addObject("categories", new Category());
         modelAndView.addObject("message", "New song created successfully. \nBack to list after 3s.");
         return modelAndView;
     }
 
     @GetMapping("")
     public ModelAndView listProvinces() {
-        Iterable<Category> category = categoryService.findAll();
+        Iterable<Category> categories = categoryService.findAll();
         ModelAndView modelAndView = new ModelAndView("/category/index");
-        modelAndView.addObject("cate", category);
+        modelAndView.addObject("categories", categories);
         return modelAndView;
     }
 
@@ -49,7 +49,7 @@ public class CategoryController {
         Optional<Category> category = categoryService.findById(id);
         if (category.isPresent()) {
             ModelAndView modelAndView = new ModelAndView("/category/edit");
-            modelAndView.addObject("cate", category);
+            modelAndView.addObject("categories", category);
             return modelAndView;
         } else {
             return new ModelAndView("/error.404");
@@ -57,10 +57,10 @@ public class CategoryController {
     }
 
     @PostMapping(value = "/edit")
-    public ModelAndView updateCustomer(@ModelAttribute("category") Category category) {
+    public ModelAndView updateCustomer(@ModelAttribute("categories") Category category) {
         categoryService.save(category);
         ModelAndView modelAndView = new ModelAndView("/category/edit");
-        modelAndView.addObject("cate", category);
+        modelAndView.addObject("categories", category);
         modelAndView.addObject("message", "Category updated successfully. \nBack to list after 3s.");
         return modelAndView;
     }
@@ -68,6 +68,6 @@ public class CategoryController {
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable Long id) {
         categoryService.remove(id);
-        return "redirect:/category";
+        return "redirect:/categories";
     }
 }
